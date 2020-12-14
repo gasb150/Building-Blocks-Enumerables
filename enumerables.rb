@@ -121,3 +121,6 @@ end
 
 puts 'multiply_els'
 puts multiply_els([2, 4, 5])
+
+puts '2.--------my_each_with_index--------'
+%w[Sharon Leo Leila Brian Arun].my_each_with_index { |friend, index| puts friend if index.even? }
