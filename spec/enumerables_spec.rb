@@ -1,7 +1,7 @@
 require './enumerables'
 
 describe Enumerable do
-	let(:array) {%w[Sharon Leo Leila Brian Arun]}
+  let(:array) {%w[Sharon Leo Leila Brian Arun]}
 
   	context 'my_each' do
   	it "move into every item of array" do
