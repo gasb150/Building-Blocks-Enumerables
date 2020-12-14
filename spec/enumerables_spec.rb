@@ -1,7 +1,7 @@
 require './enumerables'
 
 describe Enumerable do
-  let(:array) {%w[Sharon Leo Leila Brian Arun]}
+  let(:array) { %w[Sharon Leo Leila Brian Arun] }
 
   context 'my_each' do
     it 'move into every item of array' do
@@ -11,7 +11,8 @@ describe Enumerable do
 
   context 'my_each_with_index' do
     it 'move into every item of array and match with index' do
-      expect(array.my_each_with_index { |friend, i| i }).to eql(array.each_with_index { |friend, i| i })
+      to_expect = array.each_with_index { |friend, index| friend if index.even? }
+      expect(array.my_each_with_index { |friend, index| friend if index.even? }).to eql(to_expect)
     end
   end
 
@@ -34,11 +35,11 @@ describe Enumerable do
       expect(array.my_all?(/a/)).to eql(false)
     end
 
-    it "compare if all elements has a numeric value" do
+    it 'compare if all elements has a numeric value' do
       expect([1, 2i, 3.14].my_all?(Numeric)).to eql(true)
     end
 
-    it "return true if the array is empty" do
+    it 'return true if the array is empty' do
       expect([].my_all?).to eql(true)
     end
   end
@@ -56,7 +57,7 @@ describe Enumerable do
       expect(array.my_any?(/z/)).to eql(false)
     end
 
-    it "compare if any element has a numeric value" do
+    it 'compare if any element has a numeric value' do
       expect([1, 2i, 3.14, 'b', 'nice'].my_any?(Integer)).to eql(true)
     end
 
@@ -73,11 +74,12 @@ describe Enumerable do
     it 'compare if none element return FALSE' do
       expect(array.my_none? { |word| word.length >= 3 }).to eql(false)
     end
+
     it "compare if none element has the letter 'a'" do
       expect(array.my_none?(/a/)).to eql(false)
     end
 
-    it "compare if none element is a numeric value" do
+    it 'compare if none element is a numeric value' do
       expect(array.my_none?(Integer)).to eql(true)
     end
 
