@@ -90,4 +90,18 @@ describe Enumerable do
 		end
 	end
 
+	context 'my_count' do
+		it 'returns the count of the arguments given inside the array' do
+			expect(array.my_count).to eql(5)
+		end
+
+		it 'returns the count of the arguments with same value given inside the array' do
+			expect(array.my_count("Leo")).to eql(1)
+		end
+
+		it 'returns the count of the arguments with same value given inside the array' do
+			expect([1, 3.14, 77].my_count { |x| (x % 2).zero? }).to eql(0)
+		end
+	end
+
 end
